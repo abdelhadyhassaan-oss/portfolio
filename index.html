@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abd Elhady Mohamed Hassaan | متخصص ذكاء اصطناعي</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F5F7;--surface:#fff;--ink:#14212B;--muted:#52626E;--line:#D3DCE2;--accent:#0B6A8A;--on:#fff;--good:#1B7F4B;--bad:#B3412E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1820;--surface:#14232D;--ink:#E7EEF2;--muted:#9DB0BC;--line:#27404E;--accent:#62C6E4;--on:#06212B;--good:#5CCB8E;--bad:#F08A74}}
+:root[data-theme="dark"]{--bg:#0D1820;--surface:#14232D;--ink:#E7EEF2;--muted:#9DB0BC;--line:#27404E;--accent:#62C6E4;--on:#06212B;--good:#5CCB8E;--bad:#F08A74}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.8 "IBM Plex Sans Arabic",Tahoma,system-ui,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 1.25rem}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+header{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;justify-content:space-between;padding:1.25rem 0;border-bottom:1px solid var(--line)}
+header b{font-weight:700}
+nav{display:flex;flex-wrap:wrap;gap:1.25rem;align-items:center}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+button{font:inherit;cursor:pointer}
+.ghost{background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:.25rem .75rem}
+.hero{padding:4rem 0 2.5rem}
+h1{font-size:clamp(2rem,6vw,3.25rem);line-height:1.35;font-weight:700;margin:0 0 1rem;max-width:18em}
+.hero p{max-width:34em;color:var(--muted);margin:0}
+section{padding:2.5rem 0}
+h2{font-size:1.6rem;margin:0 0 .5rem}
+h3{font-size:1.05rem;margin:1.5rem 0 .5rem}
+.tool{background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:1.5rem}
+.tool>p{color:var(--muted);margin:0 0 1rem}
+label{display:block;font-weight:500;margin-bottom:.4rem}
+textarea{inline-size:100%;min-block-size:11rem;padding:.75rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;resize:vertical}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem}
+.btn{background:var(--accent);color:var(--on);border:0;border-radius:8px;padding:.55rem 1.3rem;font-weight:700}
+.row .ghost{padding:.5rem 1rem}
+#out{margin-top:1.25rem}
+.empty,.meta{color:var(--muted);margin:0}
+.score{display:flex;align-items:baseline;gap:.6rem}
+.score strong{font-size:3rem;line-height:1;color:var(--accent)}
+.bar{block-size:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:.6rem 0}
+.bar i{display:block;block-size:100%;background:var(--accent)}
+.checks{list-style:none;margin:1rem 0 0;padding:0}
+.checks li{padding:.55rem 0;border-top:1px solid var(--line)}
+.checks b{display:inline-block;min-inline-size:4.2rem;font-size:.9rem}
+.ok b{color:var(--good)}.miss b{color:var(--bad)}
+.checks small{display:block;color:var(--muted);font-size:.92rem;padding-inline-start:4.2rem}
+.kw{display:flex;flex-wrap:wrap;gap:.4rem;margin:0}
+.kw span{border:1px solid var(--line);border-radius:6px;padding:0 .6rem;font-size:.95rem}
+.proj{list-style:none;margin:1rem 0 0;padding:0}
+.proj li{display:grid;gap:.15rem;padding:1rem 0;border-top:1px solid var(--line)}
+.proj strong{font-size:1.1rem}
+.proj span{color:var(--muted)}
+.skills{color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <b dir="ltr">Abd Elhady Mohamed Hassaan</b>
+  <nav aria-label="الأقسام">
+    <a href="#tool">الأداة</a><a href="#projects">مشاريعي</a><a href="#about">عني</a><a href="#contact">تواصل</a>
+    <button class="ghost" id="theme" type="button">الوضع الداكن</button>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1>ببني أدوات ويب صغيرة بتحل مشاكل حقيقية</h1>
+  <p>متخصص ذكاء اصطناعي: Claude وChatGPT وPrompt Engineering وتحليل البيانات. الأداة اللي تحت شغّالة فعلًا، جرّبها.</p>
+</div>
+
+<section id="tool" style="padding-top:0">
+  <div class="tool">
+    <h2>حلّل سيرتك الذاتية</h2>
+    <p>الصق نص سيرتك (عربي أو إنجليزي) وهتعرف نقاط القوة والنواقص. التحليل بيتم في متصفحك والنص مبيتبعتش لأي مكان.</p>
+    <label for="cv">نص السيرة الذاتية</label>
+    <textarea id="cv" dir="auto" placeholder="الصق السيرة الذاتية هنا"></textarea>
+    <div class="row">
+      <button class="btn" id="go" type="button">حلّل النص</button>
+      <button class="ghost" id="demo" type="button">جرّب مثال</button>
+      <button class="ghost" id="clr" type="button">امسح</button>
+    </div>
+    <div id="out" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>مشاريعي</h2>
+  <ul class="proj">
+    <li><strong>محلل السيرة الذاتية</strong><span>أداة بتفحص السيرة وتديك نتيجة ونصايح. هي اللي فوق.</span></li>
+    <li><strong>تحليل أرباح المبيعات (2026)</strong><span>تحليل متكامل لعينة من 200 فاتورة: Excel وتنظيف بـ Python وقاعدة SQLite واستعلامات SQL ولوحة ويب تفاعلية. قارنت المبيعات بهامش الربح لكل منتج، وصحّحت معادلة الربح بحيث لا تُحسب الضريبة ربحًا.</span></li>
+    <li><strong>تطبيق سجل المنشآت</strong><span>تطبيق HTML بملف واحد بالعربي لتسجيل المنشآت وإدارتها.</span></li><li><strong>كورس الذكاء الاصطناعي العملي (قيد الكتابة)</strong><span>كورس عملي بالعربي مدته 30 يوم يغطي ChatGPT وClaude وGemini وMake وCanva وGoogle Sheets، مبني على تمارين حقيقية.</span></li>
+  </ul>
+</section>
+
+<section id="about">
+  <h2>عني</h2>
+  <p>متخصص ذكاء اصطناعي بركّز على الاستخدام العملي لـ Claude وChatGPT: كتابة prompts دقيقة، وتحليل البيانات، وبناء أدوات ويب صغيرة بتحل مشاكل حقيقية. معايا ليسانس حقوق وماجستير في القانون العام والخاص من جامعة الزقازيق، وده خلّى أسلوبي في التحليل والكتابة منظّم ودقيق. بتعلّم من خلال بناء مشاريع حقيقية من أولها لآخرها.</p>
+  <p class="skills">Claude وChatGPT وGemini، Prompt Engineering، تحليل البيانات (Excel وSQL)، SQLite ولوحات المتابعة، HTML وGitHub Pages، Canva وGoogle Sheets وMake</p>
+</section>
+
+<section id="contact">
+  <h2>تواصل</h2>
+  <p><a href="mailto:abdelhadyhassaan@gmail.com">abdelhadyhassaan@gmail.com</a><br>
+  <a href="https://www.linkedin.com/in/abdelhady-hassaan-8a6566442/">LinkedIn</a><br>
+  <a href="https://github.com/abdelhadyhassaan-oss">GitHub</a></p>
+</section>
+</main>
+
+<footer>اتبنى بمساعدة Claude.</footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+const V=new Set(['طورت','بنيت','صممت','انشات','حسنت','قدت','اددت','نفذت','حللت','اطلقت','خفضت','برمجت','دربت','ساهمت','built','developed','designed','led','created','improved','launched','managed','implemented','reduced','increased','analyzed','automated','delivered','optimized'].map(norm));
+const STOP=new Set(['with','that','have','from','this','your','and','the','for','مع','هذا','التي','الذي','علي','عن'].map(norm));
+const SAMPLE=`أحمد علي
+مطوّر ويب مبتدئ
+ahmed@example.com | +20 100 123 4567 | github.com/ahmed
+
+نبذة
+مطوّر شغوف ببناء أدوات ويب بسيطة تحل مشاكل يومية.
+
+مهارات
+HTML, CSS, JavaScript, Git
+
+مشاريع
+بنيت موقع لمتابعة المصاريف واستخدمه 40 مستخدم.
+صممت أداة لتحليل السيرة الذاتية.
+
+التعليم
+بكالوريوس حاسبات ومعلومات`;
+
+function run(){
+  const raw=$('#cv').value.trim(),out=$('#out');
+  if(!raw){out.innerHTML='<p class="empty">الصق نص سيرتك الذاتية فوق وبعدين اضغط «حلّل النص».</p>';return}
+  const t=norm(raw),split=s=>s.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  const words=split(t),rawWords=split(raw.toLowerCase());
+  const verbs=words.filter(w=>V.has(w)||V.has(w.replace(/^و/,''))).length;
+  const metrics=(t.match(/\d+(\.\d+)?\s?(%|\+|k\b|x\b|مستخدم|عميل|users|clients|ms\b)/g)||[]).length;
+  const has=r=>r.test(t),n=words.length;
+  const C=[
+    [has(/[\w.+-]+@[\w-]+\.[\w.-]+/)?8:0,8,'إيميل','ضيف إيميل تواصل واضح.'],
+    [has(/\+?\d[\d\s-]{8,}\d/)?6:0,6,'رقم موبايل','ضيف رقم للتواصل.'],
+    [has(/(linkedin\.com|github\.com)/)?6:0,6,'لينك لينكدإن أو GitHub','ضيف لينك بروفايلك على GitHub أو لينكدإن.'],
+    [has(/(ملخص|نبذه|about|summary|profile)/)?8:0,8,'نبذة عنك','اكتب نبذة من سطرين في أول السيرة.'],
+    [has(/(خبره|خبرات|experience|employment)/)?8:0,8,'الخبرات','ضيف قسم خبرات، ولو مفيش اعتبر المشاريع والتدريب خبرة.'],
+    [has(/(تعليم|دراسه|educat|جامعه|university|بكالوريوس)/)?8:0,8,'التعليم','ضيف قسم التعليم.'],
+    [has(/(مهارات|skills|technologies)/)?8:0,8,'المهارات','ضيف قسم مهارات واضح.'],
+    [has(/(مشاريع|مشروع|projects)/)?8:0,8,'المشاريع','ضيف مشاريع بلينكاتها، دي أقوى حاجة لمبتدئ.'],
+    [Math.min(verbs,5)*3,15,'أفعال إنجاز ('+verbs+')','ابدأ جملك بأفعال زي: بنيت، طوّرت، حلّلت.'],
+    [Math.min(metrics,3)*5,15,'أرقام ونتائج ('+metrics+')','ضيف أرقام زي: 40 مستخدم، أو قلّلت الوقت 30%.'],
+    [n>=150&&n<=800?10:n>=80?5:0,10,'الطول المناسب','الأفضل تكون السيرة بين 150 و800 كلمة.']
+  ];
+  const score=C.reduce((s,c)=>s+c[0],0),label=score>=80?'سيرة قوية':score>=55?'سيرة متوسطة':'محتاجة شغل';
+  const f={};rawWords.forEach(w=>{if(w.length>=4&&!STOP.has(norm(w))&&!/^\d+$/.test(w))f[w]=(f[w]||0)+1});
+  const top=Object.entries(f).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  out.innerHTML=`<div class="score"><strong>${score}</strong><span>من 100، ${label}</span></div>
+  <div class="bar"><i style="inline-size:${score}%"></i></div><p class="meta">${n} كلمة</p>
+  <ul class="checks">${C.map(c=>{const ok=c[0]===c[1];return `<li class="${ok?'ok':'miss'}"><b>${ok?'موجود':'ناقص'}</b>${c[2]}${ok?'':`<small>${c[3]}</small>`}</li>`}).join('')}</ul>
+  <h3>أكتر كلمات متكررة</h3><p class="kw">${top.map(([w,k])=>`<span>${esc(w)} ×${k}</span>`).join('')||'لا يوجد'}</p>`;
+}
+$('#go').onclick=run;
+$('#demo').onclick=()=>{$('#cv').value=SAMPLE;run()};
+$('#clr').onclick=()=>{$('#cv').value='';$('#out').innerHTML='';$('#cv').focus()};
+const root=document.documentElement,btn=$('#theme');
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+const sync=()=>btn.textContent=isDark()?'الوضع الفاتح':'الوضع الداكن';
+btn.onclick=()=>{root.dataset.theme=isDark()?'light':'dark';sync()};
+sync();
+</script>
+</body>
+</html>
