@@ -35,6 +35,10 @@ textarea{inline-size:100%;min-block-size:11rem;padding:.75rem;border:1px solid v
 .row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem}
 .btn{background:var(--accent);color:var(--on);border:0;border-radius:8px;padding:.55rem 1.3rem;font-weight:700}
 .row .ghost{padding:.5rem 1rem}
+.row label{margin:0;font-weight:400;cursor:pointer}
+.sr{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.filebtn:focus-within{outline:3px solid var(--accent);outline-offset:3px}
+#stat{margin-top:.75rem}
 #out{margin-top:1.25rem}
 .empty,.meta{color:var(--muted);margin:0}
 .score{display:flex;align-items:baseline;gap:.6rem}
@@ -75,14 +79,16 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
 <section id="tool" style="padding-top:0">
   <div class="tool">
     <h2>حلّل سيرتك الذاتية</h2>
-    <p>الصق نص سيرتك (عربي أو إنجليزي) وهتعرف نقاط القوة والنواقص. التحليل بيتم في متصفحك والنص مبيتبعتش لأي مكان.</p>
+    <p>الصق نص سيرتك أو ارفع ملف PDF أو Word (عربي أو إنجليزي) وهتعرف نقاط القوة والنواقص. التحليل بيتم في متصفحك والملف مبيتبعتش لأي مكان.</p>
     <label for="cv">نص السيرة الذاتية</label>
     <textarea id="cv" dir="auto" placeholder="الصق السيرة الذاتية هنا"></textarea>
     <div class="row">
       <button class="btn" id="go" type="button">حلّل النص</button>
+      <label class="ghost filebtn">ارفع ملف (PDF / Word)<input class="sr" type="file" id="file" accept=".pdf,.docx,.txt"></label>
       <button class="ghost" id="demo" type="button">جرّب مثال</button>
       <button class="ghost" id="clr" type="button">امسح</button>
     </div>
+    <p id="stat" class="meta" aria-live="polite"></p>
     <div id="out" aria-live="polite"></div>
   </div>
 </section>
@@ -113,6 +119,8 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
 <footer>اتبنى بمساعدة Claude.</footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -165,6 +173,38 @@ function run(){
   <ul class="checks">${C.map(c=>{const ok=c[0]===c[1];return `<li class="${ok?'ok':'miss'}"><b>${ok?'موجود':'ناقص'}</b>${c[2]}${ok?'':`<small>${c[3]}</small>`}</li>`}).join('')}</ul>
   <h3>أكتر كلمات متكررة</h3><p class="kw">${top.map(([w,k])=>`<span>${esc(w)} ×${k}</span>`).join('')||'لا يوجد'}</p>`;
 }
+async function readFile(f){
+  const n=f.name.toLowerCase();
+  if(n.endsWith('.txt'))return await f.text();
+  const buf=await f.arrayBuffer();
+  if(n.endsWith('.docx')){
+    if(typeof mammoth==='undefined')throw new Error('lib');
+    return (await mammoth.extractRawText({arrayBuffer:buf})).value;
+  }
+  if(n.endsWith('.pdf')){
+    if(typeof pdfjsLib==='undefined')throw new Error('lib');
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;let t='';
+    for(let i=1;i<=pdf.numPages;i++){
+      const c=await (await pdf.getPage(i)).getTextContent();
+      t+=c.items.map(x=>x.str+(x.hasEOL?'\n':' ')).join('')+'\n';
+    }
+    return t;
+  }
+  throw new Error('type');
+}
+$('#file').onchange=async e=>{
+  const f=e.target.files[0],st=$('#stat');if(!f)return;
+  st.textContent='جاري قراءة الملف...';
+  try{
+    const t=(await readFile(f)).trim();
+    if(t.length<30){st.textContent='مقدرتش أطلّع نص مقروء من الملف. غالبًا ده PDF متصوّر (scan). جرّب ملف نصي أو الصق النص يدويًا.';return}
+    $('#cv').value=t;st.textContent='تم قراءة الملف: '+f.name;run();
+  }catch(err){
+    st.textContent=err.message==='type'?'النوع ده مش مدعوم. ارفع PDF أو DOCX أو TXT.':'حصلت مشكلة في قراءة الملف. جرّب ملف تاني أو الصق النص يدويًا.';
+  }
+  e.target.value='';
+};
 $('#go').onclick=run;
 $('#demo').onclick=()=>{$('#cv').value=SAMPLE;run()};
 $('#clr').onclick=()=>{$('#cv').value='';$('#out').innerHTML='';$('#cv').focus()};
